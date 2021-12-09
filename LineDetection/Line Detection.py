@@ -26,8 +26,10 @@ def getIntersectionPoint(x1, y1, x2, y2, x3, y3, x4, y4):
 images = []
 image = cv2.imread('line.png', cv2.IMREAD_COLOR)
 image2 = cv2.imread('line4.png', cv2.IMREAD_COLOR)
+image3 = cv2.imread('line2.png', cv2.IMREAD_COLOR)
 images.append(image)
 images.append(image2)
+images.append(image3)
 # image = cv2.resize(image, (960, 540))
 
 for i in range(len(images)):
