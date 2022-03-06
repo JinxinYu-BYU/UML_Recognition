@@ -186,7 +186,7 @@ for cnt in contours:
                 # plt.scatter(x, y)
             i = i + 1
     # a = a + 1
-
+##TODO: put all text into the rectangles
 classes = group_rectangles()
 for rec in classes:
     cv2.rectangle(img, rec.topLeft, rec.bottomRight, (0, 0, 0), 10)
