@@ -197,24 +197,28 @@ class RectangleRemover:
             for rec in recList:
                 for i in range(len(self.words["text"])):
                     if self.words["left"][i] >= rec.getLeftX() and (self.words["left"][i] + self.words["width"][i]) <= rec.getRightX() \
-                            and self.words["top"][i] >= rec.getTopY() and self.words["height"][i] <= rec.getBottomY():
-                        rec.addValues(self.words["text"][i])
-                        # self.words["left"].pop(i)
-                        # self.words["top"].pop(i)
-                        # self.words["width"].pop(i)
-                        # self.words["height"].pop(i)
-                        # self.words["text"].pop(i)
+                            and self.words["top"][i] >= rec.getTopY() and (self.words["top"][i] + self.words["height"][i]) <= rec.getBottomY():
+                        if (not self.words["text"][i].isspace()) and (len(self.words["text"][i])) > 0:
+                            print("added: " + self.words["text"][i])
+                            print("length: " + str(len(self.words["text"][i])))
+                            rec.addValues((self.words["text"][i], self.words["left"][i], self.words["top"][i], self.words["width"][i], self.words["height"][i]))
 
         print("before testing")
         print(self.words["text"])
         # testing
-        for rec in widthMap.values():
+        for recList in widthMap.values():
             for rec in recList:
                 print("topleft: {}, bottomright: {}, values: {}".format(rec.topLeft, rec.bottomRight, rec.getValues()))
 
         classes = self.group_rectangles(widthMap)
         for rec in classes:
             cv2.rectangle(self.img, rec.topLeft, rec.bottomRight, (0, 0, 0), 10)
+            for i in range(len(rec.getValues())):
+                cv2.putText(self.img,
+                            rec.getValues()[i][0],
+                            (rec.getValues()[i][1], rec.getValues()[i][2]+rec.getValues()[i][4]),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            0.7, (51, 153, 255), 2)
 
 
 
@@ -222,7 +226,7 @@ class RectangleRemover:
 
     def displayImage(self, threshold):
         # percent by which the image is resized
-        scale_percent = 35
+        scale_percent = 36
 
         # calculate the 50 percent of original dimensions
         WidndowWidth = int(self.img.shape[1] * scale_percent / 100)
