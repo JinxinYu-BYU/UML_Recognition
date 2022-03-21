@@ -24,6 +24,7 @@ class OCRscan:
         results = pytesseract.image_to_data(img, config=custom_config, output_type=Output.DICT)
         i, j = 0, 1
         out = collections.defaultdict(list)
+        text_list = []
         x = results["left"][i]
         y = results["top"][i]
         w = results["width"][i]
@@ -44,8 +45,9 @@ class OCRscan:
                 w = w1 + abs(x1 - x)
                 j += 1
             else:
+                # text_list.append(Text())
                 out["left"].append(x)
-                out["top"].append( y)
+                out["top"].append(y)
                 out["width"].append(w)
                 out["height"].append(h)
                 out["text"].append(text)
