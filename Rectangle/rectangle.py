@@ -1,13 +1,39 @@
 import collections
-
+import json
 import cv2
 import numpy as np
 import queue
-
+from json import JSONEncoder
 
 class Rectangle:
     def __init__(self, points):
-        self.values = []
+        self.topLeft = None
+        self.bottomLeft = None
+        self.topRight = None
+        self.bottomRight = None
+        self.leftX = None
+        self.rightX = None
+        self.topY = None
+        self.bottomY = None
+
+        self.setCoordinates(points)
+
+        # self.leftX = self.setLeftX()
+        # self.rightX = self.setRightX()
+        # self.topY = self.setTopY()
+        # self.bottomY = self.setBottomY()
+
+        self.texts = []
+        self.innerRectangles = []
+
+    # @classmethod
+    # def fromRectangles(cls, bottomRec, topRec):
+    #     return cls
+
+    # def __str__(self):
+    #     return json.dumps(dict(self), cls=Encoder, ensure_ascii=False)
+
+    def setCoordinates(self, points):
         if len(points) == 8:
             i = 0
             set = []
@@ -30,43 +56,57 @@ class Rectangle:
                 self.topRight = set[3]
                 self.bottomRight = set[2]
 
-    @classmethod
-    def fromRectangles(cls, bottomRec, topRec):
-        return cls
+        self.leftX = (self.topLeft[0] + self.bottomLeft[0]) / 2
+        self.rightX = (self.topRight[0] + self.bottomRight[0]) / 2
+        self.topY = (self.topLeft[1] + self.topRight[1]) / 2
+        self.bottomY = (self.bottomLeft[1] + self.bottomRight[1]) / 2
+
+    def getTopLeft(self):
+        return self.topLeft
+
+    def getBottomLeft(self):
+        return self.bottomLeft
+
+    def getTopRight(self):
+        return self.topRight
+
+    def getBottomRight(self):
+        return self.bottomRight
 
     def getLeftX(self):
         # if (self.topLeft[0] - self.bottomLeft[0]) < 20:
-        return (self.topLeft[0] + self.bottomLeft[0]) / 2
+        return self.leftX
 
     def getRightX(self):
         # if (self.topRight[0] - self.bottomRight[0]) < 20:
-        return (self.topRight[0] + self.bottomRight[0]) / 2
+        return self.rightX
 
     def getTopY(self):
         # if (self.topLeft[1] - self.topRight[1]) < 20:
-        return (self.topLeft[1] + self.topRight[1]) / 2
+        return self.topY
 
     def getBottomY(self):
         # if (self.bottomLeft[1] - self.bottomRight[1]) < 20:
-        return (self.bottomLeft[1] + self.bottomRight[1]) / 2
+        return self.bottomY
 
     def getWidth(self):
         return self.getRightX() - self.getLeftX()
 
-    def getValues(self):
-        return self.values
+    def getTexts(self):
+        return self.texts
 
-    def addValues(self, values):
-        self.values.append(values)
+    def getInnerRectangles(self):
+        return self.innerRectangles
 
-class RecMax(Rectangle):
-    def __init__(self, p_queue):
-        pass
+    def addText(self, text):
+        self.texts.append(text)
+
 
 class RectangleRemover:
-    def __init__(self, img, words):
+    def __init__(self, img, words, text_list):
         self.img = img
         self.words = words
+        self.text_list = text_list
 
     def group_rectangles(self, widthMap):
         classes = []
@@ -119,14 +159,26 @@ class RectangleRemover:
                                   topY_list[next][1].bottomLeft[0], topY_list[next][1].bottomLeft[1],
                                   topY_list[next][1].bottomRight[0], topY_list[next][1].bottomRight[1],
                                   curr_rectangle_tuple[1].topRight[0], curr_rectangle_tuple[1].topRight[1]]
+
                         curr_rectangle = Rectangle(points)
+
+                        # add inner rectangles inside class rectangle
+                        curr_rectangle.innerRectangles.append(curr_rectangle_tuple[1])
+                        # print("topleft: {}, bottomright: {}, values: {}".format(curr_rectangle_tuple[1].topLeft, curr_rectangle_tuple[1].bottomRight, curr_rectangle_tuple[1].getTexts()))
+                        curr_rectangle.innerRectangles.append(topY_list[next][1])
+                        # print("topleft: {}, bottomright: {}, values: {}".format(curr_rectangle.topLeft, curr_rectangle.bottomRight, curr_rectangle.getTexts()))
+                        # for rec in curr_rectangle.innerRectangles:
+                        #     print("topleft: {}, bottomright: {}, values: {}".format(
+                        #         rec.topLeft,
+                        #         rec.bottomRight,
+                        #         rec.getTexts()))
+
                         topY_list.pop(next)
                         curr_rectangle_tuple = (curr_rectangle_tuple[0], curr_rectangle)
                         topY_list[curr] = curr_rectangle_tuple
                         continue
 
-                    if topY_list[next][1].getTopY() - curr_rectangle_tuple[
-                        1].getBottomY() > 5:  ## gap too big, impossible to merge
+                    if topY_list[next][1].getTopY() - curr_rectangle_tuple[1].getBottomY() > 5:  ## gap too big, impossible to merge
                         curr += 1
                         if curr < len(topY_list):
                             curr_rectangle_tuple = topY_list[curr]
@@ -158,7 +210,7 @@ class RectangleRemover:
                 cv2.drawContours(self.img, [cnt], 0, (255, 255, 255), 10)
 
                 # print(approx)
-                n = approx.ravel()
+                n = approx.ravel().tolist()
                 rectangle = Rectangle(n)
                 width = rectangle.getWidth() - rectangle.getWidth() % 5
                 if width in widthMap:
@@ -189,40 +241,51 @@ class RectangleRemover:
                     i = i + 1
             # a = a + 1
         ##TODO: put all text into the rectangles
-        print(widthMap.values())
+        # print(widthMap.values())
         for recList in widthMap.values():
             # for each word
             # if word's width < rec's width && word's top > rec's top && word's bottom < rec's bottom
             # add text values
             for rec in recList:
-                for i in range(len(self.words["text"])):
-                    if self.words["left"][i] >= rec.getLeftX() and (self.words["left"][i] + self.words["width"][i]) <= rec.getRightX() \
-                            and self.words["top"][i] >= rec.getTopY() and (self.words["top"][i] + self.words["height"][i]) <= rec.getBottomY():
-                        if (not self.words["text"][i].isspace()) and (len(self.words["text"][i])) > 0:
-                            print("added: " + self.words["text"][i])
-                            print("length: " + str(len(self.words["text"][i])))
-                            rec.addValues((self.words["text"][i], self.words["left"][i], self.words["top"][i], self.words["width"][i], self.words["height"][i]))
+        #         # for i in range(len(self.words["text"])):
+        #         #     if self.words["left"][i] >= rec.getLeftX() and (self.words["left"][i] + self.words["width"][i]) <= rec.getRightX() \
+        #         #             and self.words["top"][i] >= rec.getTopY() and (self.words["top"][i] + self.words["height"][i]) <= rec.getBottomY():
+        #         #         if (not self.words["text"][i].isspace()) and (len(self.words["text"][i])) > 0:
+        #         #             print("added: " + self.words["text"][i])
+        #         #             print("length: " + str(len(self.words["text"][i])))
+        #         #             rec.addValues((self.words["text"][i], self.words["left"][i], self.words["top"][i], self.words["width"][i], self.words["height"][i]))
+                for i in range(len(self.text_list)):
+                    if self.text_list[i].getLeftX() >= rec.getLeftX() and self.text_list[i].getRightX() <= rec.getRightX() \
+                            and self.text_list[i].getTopY() >= rec.getTopY() and self.text_list[i].getBottomY() <= rec.getBottomY():
+                        if (not self.text_list[i].getText().isspace()) and (len(self.text_list[i].getText())) > 0:
+                            # print("added: " + self.text_list[i].getText())
+                            # print("length: " + str(len(self.text_list[i].getText())))
+                            rec.addText(self.text_list[i])
 
-        print("before testing")
-        print(self.words["text"])
+        # print("before testing")
+        # print(self.words["text"])
         # testing
-        for recList in widthMap.values():
-            for rec in recList:
-                print("topleft: {}, bottomright: {}, values: {}".format(rec.topLeft, rec.bottomRight, rec.getValues()))
+        # for recList in widthMap.values():
+        #     for rec in recList:
+        #         print("topleft: {}, bottomright: {}, values: {}".format(rec.topLeft, rec.bottomRight, rec.getTexts()))
 
         classes = self.group_rectangles(widthMap)
+
+        print(json.dumps(classes, cls=Encoder))
+        with open("rec.json", "w") as outfile:
+            outfile.write(json.dumps(classes, cls=Encoder))
+
         for rec in classes:
             cv2.rectangle(self.img, rec.topLeft, rec.bottomRight, (0, 0, 0), 10)
-            for i in range(len(rec.getValues())):
+            for i in range(len(rec.getTexts())):
                 cv2.putText(self.img,
-                            rec.getValues()[i][0],
-                            (rec.getValues()[i][1], rec.getValues()[i][2]+rec.getValues()[i][4]),
+                            rec.getTexts()[i].getText(),
+                            (rec.getTexts()[i].getLeftX(), rec.getTexts()[i].getBottomY()),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             0.7, (51, 153, 255), 2)
 
-
-
         self.displayImage(threshold)
+
 
     def displayImage(self, threshold):
         # percent by which the image is resized
@@ -243,6 +306,11 @@ class RectangleRemover:
         cv2.imshow("Threshold", threshold)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+
+
+class Encoder(JSONEncoder):
+    def default(self, obj):
+        return obj.__dict__
 
 
 if __name__ == '__main__':

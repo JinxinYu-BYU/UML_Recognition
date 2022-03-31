@@ -3,6 +3,9 @@ import cv2
 import pytesseract
 import numpy as np
 from pytesseract import Output
+import OCR.OCRtext
+from json import JSONEncoder
+
 
 class OCRscan:
     def __init__( self):
@@ -30,7 +33,7 @@ class OCRscan:
         w = results["width"][i]
         h = results["height"][i]
         text = results["text"][i]
-            # print(text)
+
         text = str(text).strip()
         while j < len(results["text"]):
             x1 = results["left"][j]
@@ -45,7 +48,7 @@ class OCRscan:
                 w = w1 + abs(x1 - x)
                 j += 1
             else:
-                # text_list.append(Text())
+                text_list.append(OCR.OCRtext.OCRtext(x, y, w, h, text))
                 out["left"].append(x)
                 out["top"].append(y)
                 out["width"].append(w)
@@ -86,7 +89,7 @@ class OCRscan:
                 #             0.5, (255, 0, 0), 1)
 
         self.displayImg(img)
-        return img, out
+        return img, out, text_list
 
         # 999149348
 
