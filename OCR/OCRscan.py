@@ -12,18 +12,13 @@ class OCRscan:
         pass
 
     def scan(self, img):
-        # img = cv2.imread('example.png')
         pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
         # Adding custom options
-        # custom_config = r'--oem 1 -c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyz1234567890+- -c tessedit_char_blacklist=_><|\[] --psm 3'
         custom_config = r'-c tessedit_char_whitelist= abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890+- -c tessedit_char_blacklist=_|\[]'
-        # custom_config = r'--oem 1 -c tessedit_char_blacklist=abcdefghijklmnopqrstuvwxyz1234567890 --psm 1'
-        # get grayscale image
-
         # h, w, c = img.shape
         # img = get_grayscale(img)
         # img = thresholding(img)
-        text = pytesseract.image_to_string(img, config=custom_config, lang='eng')
+        # text = pytesseract.image_to_string(img, config=custom_config, lang='eng')
         results = pytesseract.image_to_data(img, config=custom_config, output_type=Output.DICT)
         i, j = 0, 1
         out = collections.defaultdict(list)
@@ -79,8 +74,8 @@ class OCRscan:
                 # print("Text: {}, Len: {}, Top Left: {}, {}, BttmRight: {}, {}".format(text, len(text), x, y, x+w, y+h))
                 # print("")
                 cv2.rectangle(img,
-                              (x, y),
-                              (x + w, y + h),
+                              (x-5, y-5),
+                              (x + w + 5, y + h + 5),
                               (255, 255, 255), -1)
                 # cv2.putText(img,
                 #             text,
@@ -91,7 +86,6 @@ class OCRscan:
         self.displayImg(img)
         return img, out, text_list
 
-        # 999149348
 
     def displayImg(self, img):
         img = self.resizeImg(img)
