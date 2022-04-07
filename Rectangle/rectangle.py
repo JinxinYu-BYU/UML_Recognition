@@ -4,6 +4,8 @@ import cv2
 import numpy as np
 import queue
 from json import JSONEncoder
+import uuid
+
 
 class Rectangle:
     def __init__(self, points):
@@ -11,6 +13,7 @@ class Rectangle:
         self.bottomLeft = None
         self.topRight = None
         self.bottomRight = None
+        self.id = ""
         # self.leftX = None
         # self.rightX = None
         # self.topY = None
@@ -170,6 +173,7 @@ class RectangleRemover:
 
                 for item in topY_list:
                     if item[0] != 3:
+                        item[1].id = str(uuid.uuid4())
                         classes.append(item[1])
 
             i += 1
@@ -243,9 +247,9 @@ class RectangleRemover:
         #                     cv2.FONT_HERSHEY_SIMPLEX,
         #                     0.7, (51, 153, 255), 2)
 
-        output = self.displayImage(threshold)
+        self.displayImage(threshold)
 
-        return classes, output
+        return classes, self.img
 
     def displayImage(self, threshold):
         # percent by which the image is resized
@@ -262,7 +266,7 @@ class RectangleRemover:
         output = cv2.resize(self.img, dsize)
         threshold = cv2.resize(threshold, dsize)
 
-        cv2.imshow("shapes", output)
+        cv2.imshow("after removing rectangle", output)
         cv2.imshow("Threshold", threshold)
         cv2.waitKey(0)
         cv2.destroyAllWindows()

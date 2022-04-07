@@ -89,7 +89,7 @@ class OCRscan:
 
     def displayImg(self, img):
         img = self.resizeImg(img)
-        cv2.imshow('img', img)
+        cv2.imshow('ocr', img)
         cv2.waitKey(0)
 
     def resizeImg(self, img):

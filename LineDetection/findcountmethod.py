@@ -2,13 +2,17 @@ import cv2
 # import matplotlib.pyplot as plt
 import numpy as np
 import collections
+import json
 
-from Rectangle.rectangle import Rectangle
+from Rectangle.rectangle import Rectangle, Encoder
 
 class LineDetection:
 
-    def detectLine(self, rectangles, image):
+    def detectLine(self, classes, image):
         # image = cv2.imread('line2.png', cv2.IMREAD_COLOR)
+        pr_image = cv2.imread("OCR/SimpleAsteroid.png", cv2.COLOR_RGB2GRAY)
+        print(pr_image.shape)
+        print(image.shape)
         gray_image = cv2.cvtColor(image, cv2.IMREAD_GRAYSCALE) # cv2.COLOR_RGB2GRAY
 
         # canny edge detection
@@ -16,14 +20,16 @@ class LineDetection:
 
 
         contours, hierachy = cv2.findContours(canny_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        blank_image = np.zeros([image.shape[0], image.shape[1]], np.uint8)
-        print(blank_image.shape)
+
+
         ## TODO : This is the output, each list inside this dictionary represents a line(includes the endpoints of one line)
-        outCnt = collections.defaultdict(list)
+        # outCnt = collections.defaultdict(list)
+        outCnt = []
         index = 0
         while index in range(len(contours)):
+            lineSet = []
             cnt = contours[index]
-            print(index)
+            blank_image = np.zeros([image.shape[0], image.shape[1]], np.uint8)
             for i in cnt:
                 blank_image[i[0][1], i[0][0]] = 255
 
@@ -87,6 +93,7 @@ class LineDetection:
 
 
             # Loop trough the dictionary and get the final centroid values:
+
             for k in centroidsDictionary:
                 # Get the value of the current key:
                 (cx, cy, count) = centroidsDictionary[k]
@@ -95,10 +102,11 @@ class LineDetection:
                     cx = int(cx/count)
                     cy = int(cy/count)
                 # Draw circle at the centroid
-                cv2.circle(image, (cx, cy), 5, (0, 0, 255), -1)
-                outCnt[index].append((int(cx), int(cy)))
+                if index < 4:
+                    cv2.circle(pr_image, (cx, cy), 5, (0, 0, 255), -1)
+                lineSet.append((int(cx), int(cy)))
                 cv2.rectangle(image, (cx-33, cy-33),(cx+33, cy+33),(0, 255, 255), 2 )
-
+            outCnt.append(lineSet)
             index += 1
 
         # corners = cv2.goodFeaturesToTrack(gray_image,25,0.01,10)
@@ -108,7 +116,8 @@ class LineDetection:
         #     x,y = i.ravel()
         #     cv2.circle(image,(x,y),3,255,-1)
 
-        print(outCnt)
+        print("outCnt.values:", outCnt)
+        self.match(outCnt, classes, pr_image)
         cv2.imshow('image', image)
         cv2.imshow('blimage', blank_image)
         #
@@ -117,12 +126,10 @@ class LineDetection:
             cv2.destroyAllWindows()
 
 
-        ## TODO: use two for loops to match each class with each point in outCnt
-        # for line in outCnt:
-        #     for rec in rectangles:
-        #         allRelationships = []
-        #         for endPoint in line:
-        #             if self.isInRec(rec, endPoint):
+
+
+
+
 
 
 
@@ -130,13 +137,64 @@ class LineDetection:
         ## if one line connects two different classes, build a relationship instance for them and add the relationship to a list
         ## return a list of relationships
 
-    def isInRec(rec, point):
-        if rec.getTopY() - 5 < point[1] < rec.getBottomY() + 5 and rec.getLeftX() - 5 < point[0] < rec.getRightX() + 5:
-            return True
+    def isInRec(self, rec, point):
+        thresh = 15
+        if rec.getTopY() - thresh < point[1] < rec.getTopY() + thresh and rec.getLeftX() - thresh < point[0] < rec.getRightX() + thresh:
+            return "Top"
+        elif rec.getBottomY() - 20 < point[1] < rec.getBottomY() + 20 and rec.getLeftX() - thresh < point[0] < rec.getRightX() + thresh:
+            return "Bottom"
+        elif rec.getTopY() - thresh < point[1] < rec.getBottomY() + thresh and rec.getLeftX() - thresh < point[0] < rec.getLeftX() + thresh:
+            return "Left"
+        elif rec.getTopY() - thresh < point[1] < rec.getBottomY() + thresh and rec.getRightX() - thresh < point[0] < rec.getRightX() + thresh:
+            return "Right"
+        else:
+            return None
+
+    def match(self, outCnt, classes, pr_image):
+        allRelationships = []
+        # [(Ship.id, Top), (Bullet.id: bottom)]
+        ## TODO: use two for loops to match each class with each point in outCnt
+        for line in outCnt:
+            relationship = Relationship()
+            for endPoint in line:
+                for rec in classes:
+                    side = self.isInRec(rec, endPoint)
+                    if side:
+                        relationship.relationArray.append(( rec.id, side))
+                        break
+            if len(relationship.relationArray) > 1:
+                allRelationships.append(relationship)
+        print(json.dumps(allRelationships, cls=Encoder))
+        with open("relationship.json", "w") as outfile:
+            outfile.write(json.dumps(allRelationships, cls=Encoder, indent="\t"))
+
+        # for list in allRelationships:
+        #     for tuple in list.relationArray:
+        #         cv2.putText(pr_image,
+        #                     tuple[2],
+        #                     tuple[0],
+        #                     cv2.FONT_HERSHEY_SIMPLEX,
+        #                     1, (255, 255, 0), 1)
+        scale_percent = 65
+        WidndowWidth = int(pr_image.shape[1] * scale_percent / 100)
+        height = int(pr_image.shape[0] * scale_percent / 100)
+
+        # dsize
+        dsize = (WidndowWidth, height)
+
+        # resize image
+        pr_image= cv2.resize(pr_image, dsize)
+
+
+        cv2.imshow('primage', pr_image)
+        #
+        # # Exiting the window if 'q' is pressed on the keyboard.
+        if cv2.waitKey(0) & 0xFF == ord('q'):
+            cv2.destroyAllWindows()
+        return
 
 class Relationship:
+    def __init__(self):
+        self.relationArray = []
+        self.relation = 'Association'
 
-    def __init__(self, rec1, rec2):
-        self.rec1 = rec1
-        self.rec2 = rec2
-        self.relation = ''
