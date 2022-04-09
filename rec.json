@@ -1,0 +1,1390 @@
+[
+	{
+		"topLeft": [
+			321,
+			161
+		],
+		"bottomLeft": [
+			321,
+			418
+		],
+		"topRight": [
+			558,
+			161
+		],
+		"bottomRight": [
+			558,
+			418
+		],
+		"id": "15136517-faed-41db-bab0-f66fa5b9e44e",
+		"texts": [],
+		"innerRectangles": [
+			{
+				"topLeft": [
+					321,
+					161
+				],
+				"bottomLeft": [
+					321,
+					196
+				],
+				"topRight": [
+					558,
+					161
+				],
+				"bottomRight": [
+					558,
+					196
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 421,
+						"y": 170,
+						"w": 39,
+						"h": 13,
+						"text": "Point"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					321,
+					199
+				],
+				"bottomLeft": [
+					321,
+					318
+				],
+				"topRight": [
+					558,
+					199
+				],
+				"bottomRight": [
+					558,
+					318
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 333,
+						"y": 243,
+						"w": 63,
+						"h": 9,
+						"text": "-X: float"
+					},
+					{
+						"x": 333,
+						"y": 264,
+						"w": 63,
+						"h": 13,
+						"text": "-y : float"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					321,
+					321
+				],
+				"bottomLeft": [
+					321,
+					418
+				],
+				"topRight": [
+					558,
+					321
+				],
+				"bottomRight": [
+					558,
+					418
+				],
+				"id": "",
+				"texts": [],
+				"innerRectangles": []
+			}
+		]
+	},
+	{
+		"topLeft": [
+			1361,
+			101
+		],
+		"bottomLeft": [
+			1361,
+			378
+		],
+		"topRight": [
+			1598,
+			101
+		],
+		"bottomRight": [
+			1598,
+			378
+		],
+		"id": "6e630ca4-567b-4a27-b677-b9eee9c28b76",
+		"texts": [],
+		"innerRectangles": [
+			{
+				"topLeft": [
+					1361,
+					101
+				],
+				"bottomLeft": [
+					1361,
+					136
+				],
+				"topRight": [
+					1598,
+					101
+				],
+				"bottomRight": [
+					1598,
+					136
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 1449,
+						"y": 110,
+						"w": 62,
+						"h": 16,
+						"text": "Velocity"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					1361,
+					139
+				],
+				"bottomLeft": [
+					1361,
+					214
+				],
+				"topRight": [
+					1598,
+					139
+				],
+				"bottomRight": [
+					1598,
+					214
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 1373,
+						"y": 157,
+						"w": 73,
+						"h": 13,
+						"text": "-dx : float"
+					},
+					{
+						"x": 1373,
+						"y": 179,
+						"w": 73,
+						"h": 16,
+						"text": "-dy : float"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					1361,
+					217
+				],
+				"bottomLeft": [
+					1361,
+					378
+				],
+				"topRight": [
+					1598,
+					217
+				],
+				"bottomRight": [
+					1598,
+					378
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 1373,
+						"y": 245,
+						"w": 82,
+						"h": 17,
+						"text": "+Velocity()"
+					},
+					{
+						"x": 1373,
+						"y": 267,
+						"w": 117,
+						"h": 17,
+						"text": "+getDx() : float"
+					},
+					{
+						"x": 1373,
+						"y": 289,
+						"w": 117,
+						"h": 16,
+						"text": "+getDy() : float"
+					},
+					{
+						"x": 1373,
+						"y": 310,
+						"w": 172,
+						"h": 17,
+						"text": "+setDx(dx:float) : void"
+					},
+					{
+						"x": 1373,
+						"y": 332,
+						"w": 172,
+						"h": 17,
+						"text": "+setDy(dy:float) : void"
+					}
+				],
+				"innerRectangles": []
+			}
+		]
+	},
+	{
+		"topLeft": [
+			1261,
+			1001
+		],
+		"bottomLeft": [
+			1261,
+			1258
+		],
+		"topRight": [
+			1518,
+			1001
+		],
+		"bottomRight": [
+			1518,
+			1258
+		],
+		"id": "5cb8590f-9f3f-4b35-82db-edbf2fdf5c03",
+		"texts": [],
+		"innerRectangles": [
+			{
+				"topLeft": [
+					1261,
+					1001
+				],
+				"bottomLeft": [
+					1261,
+					1036
+				],
+				"topRight": [
+					1518,
+					1001
+				],
+				"bottomRight": [
+					1518,
+					1036
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 1358,
+						"y": 1010,
+						"w": 65,
+						"h": 16,
+						"text": "BigRock"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					1261,
+					1039
+				],
+				"bottomLeft": [
+					1261,
+					1095
+				],
+				"topRight": [
+					1518,
+					1039
+				],
+				"bottomRight": [
+					1518,
+					1095
+				],
+				"id": "",
+				"texts": [],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					1261,
+					1098
+				],
+				"bottomLeft": [
+					1261,
+					1258
+				],
+				"topRight": [
+					1518,
+					1098
+				],
+				"bottomRight": [
+					1518,
+					1258
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 1273,
+						"y": 1137,
+						"w": 172,
+						"h": 17,
+						"text": "+BigRock(point:Point)"
+					},
+					{
+						"x": 1273,
+						"y": 1159,
+						"w": 107,
+						"h": 16,
+						"text": "+draw() : void"
+					},
+					{
+						"x": 1273,
+						"y": 1180,
+						"w": 206,
+						"h": 17,
+						"text": "+hit(rock:vector<Rock*>) :"
+					},
+					{
+						"x": 1272,
+						"y": 1202,
+						"w": 32,
+						"h": 13,
+						"text": "void"
+					}
+				],
+				"innerRectangles": []
+			}
+		]
+	},
+	{
+		"topLeft": [
+			806,
+			701
+		],
+		"bottomLeft": [
+			806,
+			978
+		],
+		"topRight": [
+			1063,
+			701
+		],
+		"bottomRight": [
+			1063,
+			978
+		],
+		"id": "d204a005-9710-4829-82d1-614f0376eaf3",
+		"texts": [],
+		"innerRectangles": [
+			{
+				"topLeft": [
+					806,
+					701
+				],
+				"bottomLeft": [
+					806,
+					736
+				],
+				"topRight": [
+					1063,
+					701
+				],
+				"bottomRight": [
+					1063,
+					736
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 915,
+						"y": 710,
+						"w": 40,
+						"h": 13,
+						"text": "Rock"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					806,
+					739
+				],
+				"bottomLeft": [
+					806,
+					814
+				],
+				"topRight": [
+					1063,
+					739
+				],
+				"bottomRight": [
+					1063,
+					814
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 817,
+						"y": 758,
+						"w": 119,
+						"h": 12,
+						"text": "#rotation : float"
+					},
+					{
+						"x": 817,
+						"y": 778,
+						"w": 93,
+						"h": 14,
+						"text": "#radius : int"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					806,
+					817
+				],
+				"bottomLeft": [
+					806,
+					978
+				],
+				"topRight": [
+					1063,
+					817
+				],
+				"bottomRight": [
+					1063,
+					978
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 818,
+						"y": 845,
+						"w": 146,
+						"h": 17,
+						"text": "+Rock(point:Point)"
+					},
+					{
+						"x": 818,
+						"y": 867,
+						"w": 136,
+						"h": 17,
+						"text": "+getRadius() : int"
+					},
+					{
+						"x": 818,
+						"y": 889,
+						"w": 108,
+						"h": 16,
+						"text": "+draw() : void"
+					},
+					{
+						"x": 818,
+						"y": 910,
+						"w": 196,
+						"h": 17,
+						"text": "+hit(rock:vector<Rock*>)"
+					},
+					{
+						"x": 818,
+						"y": 932,
+						"w": 32,
+						"h": 13,
+						"text": "void"
+					}
+				],
+				"innerRectangles": []
+			}
+		]
+	},
+	{
+		"topLeft": [
+			761,
+			41
+		],
+		"bottomLeft": [
+			761,
+			518
+		],
+		"topRight": [
+			1108,
+			41
+		],
+		"bottomRight": [
+			1108,
+			518
+		],
+		"id": "512c91af-093a-4a18-b276-48072b461e20",
+		"texts": [],
+		"innerRectangles": [
+			{
+				"topLeft": [
+					761,
+					41
+				],
+				"bottomLeft": [
+					761,
+					76
+				],
+				"topRight": [
+					1108,
+					41
+				],
+				"bottomRight": [
+					1108,
+					76
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 886,
+						"y": 50,
+						"w": 99,
+						"h": 16,
+						"text": "FlyingObject"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					761,
+					79
+				],
+				"bottomLeft": [
+					761,
+					161
+				],
+				"topRight": [
+					1108,
+					79
+				],
+				"bottomRight": [
+					1108,
+					161
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 772,
+						"y": 91,
+						"w": 105,
+						"h": 16,
+						"text": "#point : Point"
+					},
+					{
+						"x": 772,
+						"y": 112,
+						"w": 147,
+						"h": 16,
+						"text": "#velocity : Velocity"
+					},
+					{
+						"x": 772,
+						"y": 133,
+						"w": 95,
+						"h": 13,
+						"text": "#alive : bool"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					761,
+					164
+				],
+				"bottomLeft": [
+					761,
+					518
+				],
+				"topRight": [
+					1108,
+					164
+				],
+				"bottomRight": [
+					1108,
+					518
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 773,
+						"y": 181,
+						"w": 120,
+						"h": 17,
+						"text": "+FlyingObject()"
+					},
+					{
+						"x": 773,
+						"y": 203,
+						"w": 205,
+						"h": 17,
+						"text": "+FlyingObject(point:Point)"
+					},
+					{
+						"x": 773,
+						"y": 246,
+						"w": 143,
+						"h": 17,
+						"text": "+getPoint() : Point"
+					},
+					{
+						"x": 773,
+						"y": 268,
+						"w": 185,
+						"h": 17,
+						"text": "+getVelocity() : Velocity"
+					},
+					{
+						"x": 773,
+						"y": 311,
+						"w": 121,
+						"h": 17,
+						"text": "tisAlive() : bool"
+					},
+					{
+						"x": 773,
+						"y": 354,
+						"w": 218,
+						"h": 17,
+						"text": "+setPoint(point:Point) : void"
+					},
+					{
+						"x": 773,
+						"y": 376,
+						"w": 281,
+						"h": 17,
+						"text": "+setVelocity(velocity:Velocity) : void"
+					},
+					{
+						"x": 773,
+						"y": 397,
+						"w": 207,
+						"h": 17,
+						"text": "+setAlive(alive:bool) : void"
+					},
+					{
+						"x": 773,
+						"y": 441,
+						"w": 89,
+						"h": 16,
+						"text": "+kill() : void"
+					},
+					{
+						"x": 773,
+						"y": 462,
+						"w": 136,
+						"h": 17,
+						"text": "+advance() : void"
+					},
+					{
+						"x": 773,
+						"y": 484,
+						"w": 108,
+						"h": 16,
+						"text": "+draw() : void"
+					}
+				],
+				"innerRectangles": []
+			}
+		]
+	},
+	{
+		"topLeft": [
+			41,
+			601
+		],
+		"bottomLeft": [
+			41,
+			1118
+		],
+		"topRight": [
+			398,
+			601
+		],
+		"bottomRight": [
+			398,
+			1118
+		],
+		"id": "ca9b7650-a45c-49fe-a6da-8d1e4688bb38",
+		"texts": [],
+		"innerRectangles": [
+			{
+				"topLeft": [
+					41,
+					601
+				],
+				"bottomLeft": [
+					41,
+					636
+				],
+				"topRight": [
+					398,
+					601
+				],
+				"bottomRight": [
+					398,
+					636
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 196,
+						"y": 610,
+						"w": 48,
+						"h": 13,
+						"text": "Game"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					41,
+					639
+				],
+				"bottomLeft": [
+					41,
+					764
+				],
+				"topRight": [
+					398,
+					639
+				],
+				"bottomRight": [
+					398,
+					764
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 53,
+						"y": 650,
+						"w": 111,
+						"h": 16,
+						"text": "-topLeft: Point"
+					},
+					{
+						"x": 53,
+						"y": 671,
+						"w": 153,
+						"h": 17,
+						"text": "-bottomRight: Point"
+					},
+					{
+						"x": 53,
+						"y": 693,
+						"w": 83,
+						"h": 16,
+						"text": "-ship: Ship"
+					},
+					{
+						"x": 53,
+						"y": 714,
+						"w": 176,
+						"h": 14,
+						"text": "-bullets:vector<Bullet>"
+					},
+					{
+						"x": 53,
+						"y": 736,
+						"w": 170,
+						"h": 13,
+						"text": "-rocks:vector<Rock*>"
+					}
+				],
+				"innerRectangles": []
+			},
+			{
+				"topLeft": [
+					41,
+					767
+				],
+				"bottomLeft": [
+					41,
+					1118
+				],
+				"topRight": [
+					398,
+					767
+				],
+				"bottomRight": [
+					398,
+					1118
+				],
+				"id": "",
+				"texts": [
+					{
+						"x": 53,
+						"y": 783,
+						"w": 196,
+						"h": 17,
+						"text": "+Game(tl:Point, br:Point)"
+					},
+					{
+						"x": 53,
+						"y": 804,
+						"w": 80,
+						"h": 17,
+						"text": "+-Game()"
+					},
+					{
+						"x": 53,
+						"y": 826,
+						"w": 208,
+						"h": 17,
+						"text": "+handlelnput(ui:Interface);"
+					},
+					{
+						"x": 53,
+						"y": 848,
+						"w": 131,
+						"h": 16,
+						"text": "+advance(): void"
+					},
+					{
+						"x": 53,
+						"y": 869,
+						"w": 191,
+						"h": 17,
+						"text": "+draw(ui:Interface): void"
+					},
+					{
+						"x": 53,
+						"y": 912,
+						"w": 174,
+						"h": 17,
+						"text": "-createRocks(): Rock*"
+					},
+					{
+						"x": 53,
+						"y": 934,
+						"w": 180,
+						"h": 17,
+						"text": "-advanceBullets(): void"
+					},
+					{
+						"x": 53,
+						"y": 956,
+						"w": 177,
+						"h": 16,
+						"text": "-advanceRocks(): void"
+					},
+					{
+						"x": 53,
+						"y": 977,
+						"w": 163,
+						"h": 17,
+						"text": "-advanceShip(): void"
+					},
+					{
+						"x": 53,
+						"y": 1020,
+						"w": 189,
+						"h": 17,
+						"text": "-handleCollisions(): void"
+					},
+					{
+						"x": 53,
+						"y": 1042,
+						"w": 193,
+						"h": 17,
+						"text": "-cleanUpZombies(): void"
+					},
+					{
+						"x": 53,
+						"y": 1064,
+						"w": 308,
+						"h": 16,
+						"text": "-getClosestDistance(obj1:FlyingObject,"
+					},
+					{
+						"x": 53,
+						"y": 1085,
+						"w": 193,
+						"h": 17,
+						"text": "obj2: FlyingObject): float"
+					}
+				],
+				"innerRectangles": []
+			}
+		]
+	},
+	{
+		"topLeft": [
+			0,
+			0
+		],
+		"bottomLeft": [
+			0,
+			1299
+		],
+		"topRight": [
+			1639,
+			0
+		],
+		"bottomRight": [
+			1639,
+			1299
+		],
+		"id": "2dd3d726-db2a-48b5-9a5a-b9fe907d2b7f",
+		"texts": [
+			{
+				"x": 886,
+				"y": 50,
+				"w": 99,
+				"h": 16,
+				"text": "FlyingObject"
+			},
+			{
+				"x": 421,
+				"y": 170,
+				"w": 39,
+				"h": 13,
+				"text": "Point"
+			},
+			{
+				"x": 772,
+				"y": 91,
+				"w": 105,
+				"h": 16,
+				"text": "#point : Point"
+			},
+			{
+				"x": 772,
+				"y": 112,
+				"w": 147,
+				"h": 16,
+				"text": "#velocity : Velocity"
+			},
+			{
+				"x": 772,
+				"y": 133,
+				"w": 95,
+				"h": 13,
+				"text": "#alive : bool"
+			},
+			{
+				"x": 333,
+				"y": 243,
+				"w": 63,
+				"h": 9,
+				"text": "-X: float"
+			},
+			{
+				"x": 333,
+				"y": 264,
+				"w": 63,
+				"h": 13,
+				"text": "-y : float"
+			},
+			{
+				"x": 196,
+				"y": 610,
+				"w": 48,
+				"h": 13,
+				"text": "Game"
+			},
+			{
+				"x": 53,
+				"y": 650,
+				"w": 111,
+				"h": 16,
+				"text": "-topLeft: Point"
+			},
+			{
+				"x": 53,
+				"y": 671,
+				"w": 153,
+				"h": 17,
+				"text": "-bottomRight: Point"
+			},
+			{
+				"x": 53,
+				"y": 693,
+				"w": 83,
+				"h": 16,
+				"text": "-ship: Ship"
+			},
+			{
+				"x": 53,
+				"y": 714,
+				"w": 176,
+				"h": 14,
+				"text": "-bullets:vector<Bullet>"
+			},
+			{
+				"x": 53,
+				"y": 736,
+				"w": 170,
+				"h": 13,
+				"text": "-rocks:vector<Rock*>"
+			},
+			{
+				"x": 773,
+				"y": 181,
+				"w": 120,
+				"h": 17,
+				"text": "+FlyingObject()"
+			},
+			{
+				"x": 773,
+				"y": 203,
+				"w": 205,
+				"h": 17,
+				"text": "+FlyingObject(point:Point)"
+			},
+			{
+				"x": 773,
+				"y": 246,
+				"w": 143,
+				"h": 17,
+				"text": "+getPoint() : Point"
+			},
+			{
+				"x": 773,
+				"y": 268,
+				"w": 185,
+				"h": 17,
+				"text": "+getVelocity() : Velocity"
+			},
+			{
+				"x": 773,
+				"y": 311,
+				"w": 121,
+				"h": 17,
+				"text": "tisAlive() : bool"
+			},
+			{
+				"x": 773,
+				"y": 354,
+				"w": 218,
+				"h": 17,
+				"text": "+setPoint(point:Point) : void"
+			},
+			{
+				"x": 773,
+				"y": 376,
+				"w": 281,
+				"h": 17,
+				"text": "+setVelocity(velocity:Velocity) : void"
+			},
+			{
+				"x": 773,
+				"y": 397,
+				"w": 207,
+				"h": 17,
+				"text": "+setAlive(alive:bool) : void"
+			},
+			{
+				"x": 773,
+				"y": 441,
+				"w": 89,
+				"h": 16,
+				"text": "+kill() : void"
+			},
+			{
+				"x": 773,
+				"y": 462,
+				"w": 136,
+				"h": 17,
+				"text": "+advance() : void"
+			},
+			{
+				"x": 773,
+				"y": 484,
+				"w": 108,
+				"h": 16,
+				"text": "+draw() : void"
+			},
+			{
+				"x": 53,
+				"y": 783,
+				"w": 196,
+				"h": 17,
+				"text": "+Game(tl:Point, br:Point)"
+			},
+			{
+				"x": 53,
+				"y": 804,
+				"w": 80,
+				"h": 17,
+				"text": "+-Game()"
+			},
+			{
+				"x": 53,
+				"y": 826,
+				"w": 208,
+				"h": 17,
+				"text": "+handlelnput(ui:Interface);"
+			},
+			{
+				"x": 53,
+				"y": 848,
+				"w": 131,
+				"h": 16,
+				"text": "+advance(): void"
+			},
+			{
+				"x": 53,
+				"y": 869,
+				"w": 191,
+				"h": 17,
+				"text": "+draw(ui:Interface): void"
+			},
+			{
+				"x": 53,
+				"y": 912,
+				"w": 174,
+				"h": 17,
+				"text": "-createRocks(): Rock*"
+			},
+			{
+				"x": 53,
+				"y": 934,
+				"w": 180,
+				"h": 17,
+				"text": "-advanceBullets(): void"
+			},
+			{
+				"x": 53,
+				"y": 956,
+				"w": 177,
+				"h": 16,
+				"text": "-advanceRocks(): void"
+			},
+			{
+				"x": 53,
+				"y": 977,
+				"w": 163,
+				"h": 17,
+				"text": "-advanceShip(): void"
+			},
+			{
+				"x": 53,
+				"y": 1020,
+				"w": 189,
+				"h": 17,
+				"text": "-handleCollisions(): void"
+			},
+			{
+				"x": 53,
+				"y": 1042,
+				"w": 193,
+				"h": 17,
+				"text": "-cleanUpZombies(): void"
+			},
+			{
+				"x": 53,
+				"y": 1064,
+				"w": 308,
+				"h": 16,
+				"text": "-getClosestDistance(obj1:FlyingObject,"
+			},
+			{
+				"x": 53,
+				"y": 1085,
+				"w": 193,
+				"h": 17,
+				"text": "obj2: FlyingObject): float"
+			},
+			{
+				"x": 921,
+				"y": 522,
+				"w": 27,
+				"h": 23,
+				"text": "A"
+			},
+			{
+				"x": 915,
+				"y": 710,
+				"w": 40,
+				"h": 13,
+				"text": "Rock"
+			},
+			{
+				"x": 817,
+				"y": 758,
+				"w": 119,
+				"h": 12,
+				"text": "#rotation : float"
+			},
+			{
+				"x": 817,
+				"y": 778,
+				"w": 93,
+				"h": 14,
+				"text": "#radius : int"
+			},
+			{
+				"x": 818,
+				"y": 845,
+				"w": 146,
+				"h": 17,
+				"text": "+Rock(point:Point)"
+			},
+			{
+				"x": 818,
+				"y": 867,
+				"w": 136,
+				"h": 17,
+				"text": "+getRadius() : int"
+			},
+			{
+				"x": 818,
+				"y": 889,
+				"w": 108,
+				"h": 16,
+				"text": "+draw() : void"
+			},
+			{
+				"x": 818,
+				"y": 910,
+				"w": 196,
+				"h": 17,
+				"text": "+hit(rock:vector<Rock*>)"
+			},
+			{
+				"x": 818,
+				"y": 932,
+				"w": 32,
+				"h": 13,
+				"text": "void"
+			},
+			{
+				"x": 920,
+				"y": 982,
+				"w": 28,
+				"h": 24,
+				"text": "A"
+			},
+			{
+				"x": 1449,
+				"y": 110,
+				"w": 62,
+				"h": 16,
+				"text": "Velocity"
+			},
+			{
+				"x": 1373,
+				"y": 157,
+				"w": 73,
+				"h": 13,
+				"text": "-dx : float"
+			},
+			{
+				"x": 1373,
+				"y": 179,
+				"w": 73,
+				"h": 16,
+				"text": "-dy : float"
+			},
+			{
+				"x": 1373,
+				"y": 245,
+				"w": 82,
+				"h": 17,
+				"text": "+Velocity()"
+			},
+			{
+				"x": 1373,
+				"y": 267,
+				"w": 117,
+				"h": 17,
+				"text": "+getDx() : float"
+			},
+			{
+				"x": 1373,
+				"y": 289,
+				"w": 117,
+				"h": 16,
+				"text": "+getDy() : float"
+			},
+			{
+				"x": 1373,
+				"y": 310,
+				"w": 172,
+				"h": 17,
+				"text": "+setDx(dx:float) : void"
+			},
+			{
+				"x": 1373,
+				"y": 332,
+				"w": 172,
+				"h": 17,
+				"text": "+setDy(dy:float) : void"
+			},
+			{
+				"x": 1349,
+				"y": 666,
+				"w": 188,
+				"h": 29,
+				"text": "Asteroid"
+			},
+			{
+				"x": 1387,
+				"y": 708,
+				"w": 115,
+				"h": 27,
+				"text": "CS165"
+			},
+			{
+				"x": 1358,
+				"y": 1010,
+				"w": 65,
+				"h": 16,
+				"text": "BigRock"
+			},
+			{
+				"x": 1273,
+				"y": 1137,
+				"w": 172,
+				"h": 17,
+				"text": "+BigRock(point:Point)"
+			},
+			{
+				"x": 1273,
+				"y": 1159,
+				"w": 107,
+				"h": 16,
+				"text": "+draw() : void"
+			},
+			{
+				"x": 1273,
+				"y": 1180,
+				"w": 206,
+				"h": 17,
+				"text": "+hit(rock:vector<Rock*>) :"
+			},
+			{
+				"x": 1272,
+				"y": 1202,
+				"w": 32,
+				"h": 13,
+				"text": "void"
+			}
+		],
+		"innerRectangles": []
+	}
+]

@@ -92,8 +92,3 @@ class Network(nn.Module):
         output = self.fc1(output)
 
         return output
-
-if __name__ == "__main__":
-    model = Network(8)
-    path = "RelationShapes/myFirstModel.pth"
-    model.load_state_dict(torch.load(path))

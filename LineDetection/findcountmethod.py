@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import collections
 import json
+from RelationShapes.ConnectorRecognition import recognize
 
 from Rectangle.rectangle import Rectangle, Encoder
 
