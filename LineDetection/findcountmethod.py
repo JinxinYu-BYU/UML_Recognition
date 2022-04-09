@@ -106,6 +106,8 @@ class LineDetection:
                     cv2.circle(pr_image, (cx, cy), 5, (0, 0, 255), -1)
                 lineSet.append((int(cx), int(cy)))
                 cv2.rectangle(image, (cx-33, cy-33),(cx+33, cy+33),(0, 255, 255), 2 )
+                cropped_image = image[cx: cx + 66, cy:cy + 66]
+                print(recognize(cropped_image))
             outCnt.append(lineSet)
             index += 1
 
