@@ -34,7 +34,6 @@ class Dataset(torch.utils.data.Dataset):
 # Loading and normalizing the data.
 # Define transformations for the training and test sets
 transformations = transforms.Compose([
-    ## color, radomrotation rotandresizecrop,
     transforms.Resize((224, 224)),
     transforms.RandomRotation(90, torchvision.transforms.InterpolationMode.BILINEAR, fill=1),
     transforms.RandomVerticalFlip(0.5),
@@ -42,16 +41,6 @@ transformations = transforms.Compose([
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
 ])
 
-test_transforms = transforms.Compose([
-    ## color, radomrotation rotandresizecrop,
-    transforms.Resize((224, 224)),
-    transforms.RandomRotation(90, torchvision.transforms.InterpolationMode.BILINEAR, fill=1),
-    transforms.RandomVerticalFlip(0.5),
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-])
-
-# CIFAR10 dataset consists of 50K training images. We define the batch size of 10 to load 5,000 batches of images.
 batch_size = 1
 number_of_labels = 8
 
@@ -66,8 +55,6 @@ train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True, num_wo
 print("The number of images in a training set is: ", len(train_loader) * batch_size)
 
 # Create an instance for testing, note that train is set to False.
-# When we run this code for the first time, the CIFAR10 test dataset will be downloaded locally.
-# test_set = CIFAR10(root="train", train=False, transform=transformations, download=True)
 test_set = torchvision.datasets.ImageFolder('img', transform=transformations)
 
 # Create a loader for the test set which will read the data within batch size and put into memory.
@@ -95,9 +82,7 @@ class Network(nn.Module):
         self.bn4 = nn.BatchNorm2d(24)
         self.conv5 = nn.Conv2d(in_channels=24, out_channels=24, kernel_size=3, stride=1, padding=1)
         self.bn5 = nn.BatchNorm2d(24)
-        self.pool = nn.AdaptiveAvgPool2d(1) ##
-        # self.fc1 = nn.Conv2d(in_channels=24, out_channels=num_classes, kernel_size=1, stride=1, padding=1)
-
+        self.pool = nn.AdaptiveAvgPool2d(1)
         self.fc1 = nn.Linear(24, num_classes)
 
     def forward(self, input):
@@ -206,78 +191,10 @@ def imageshow(img):
     plt.show()
 
 
-# Function to test the model with a batch of images and show the labels predictions
-def testBatch():
-    from PIL import Image
-    # model.pool = torch.nn.Identity()
-   # get batch of images from the test DataLoader
-    model.eval()
-    # images, labels = next(iter(test_loader))
-    images = Image.open('sample/image (3).png').convert('RGB')
-    images = test_transforms(images)[None]
-
-    # show all images as one image grid
-    # imageshow(torchvision.utils.make_grid(images))
-
-    # Show the real labels on the screen
-    # print('Real labels: ', ' '.join('%5s' % classes[labels[j]]
-    #                                 for j in range(batch_size)))
-
-    # Let's see what if the model identifiers the  labels of those example
-    outputs = model(images)
-
-    # We got the probability for every 10 labels. The highest (max) probability should be correct label
-    _, predicted = torch.max(outputs, 1)
-    if _.detach().numpy()[0] > 20:
-        predicted_class = train_set.classes[outputs.argmax().item()]
-    else:
-        predicted_class = 'none'
-
-    print(f'Predicted class: {predicted_class}')
-
-
-    # Let's show the predicted labels on the screen to compare with the real ones
-    print('Predicted: ', ' '.join('%5s' % classes[predicted[j]]
-                                  for j in range(batch_size)))
-
-
-# Function to test what classes performed well
-# def testClassess():
-#     class_correct = list(0. for i in range(number_of_labels))
-#     class_total = list(0. for i in range(number_of_labels))
-#     with torch.no_grad():
-#         for data in test_loader:
-#             images, labels = data
-#             outputs = model(images)
-#             _, predicted = torch.max(outputs, 1)
-#             c = (predicted == labels).squeeze()
-#             for i in range(batch_size - 1):
-#                 label = labels[i]
-#                 class_correct[label] += c[i].item()
-#                 class_total[label] += 1
-#
-#     for i in range(number_of_labels):
-#         print('Accuracy of %5s : %2d %%' % (
-#             classes[i], 100 * class_correct[i] / class_total[i]))
-
-# def test_image ():
-#     outputs = model('img/hollow_triangles/1.png')
-#
-#     return 'label'
-
 if __name__ == "__main__":
-    # Let's build our model
-    # train(8)
-    print('Finished Training')
-
-    # Test which classes performed well
-    # testModelAccuracy()
+    train(8)
 
     # Let's load the model we just created and test the accuracy per label
     model = Network(8)
     path = "myFirstModel.pth"
     model.load_state_dict(torch.load(path))
-
-    # Test with batch of images
-    testBatch()
-    # testClassess()
